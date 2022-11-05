@@ -31,6 +31,8 @@ classdef Vizualizer < handle
             else
                 obj.plt_quad_dots.XData = dots(1,:);
                 obj.plt_quad_dots.YData = dots(2,:);
+                obj.plt_quad_line.XData = dots(1,:);
+                obj.plt_quad_line.YData = dots(2,:);
             end
             % Line of quadrotor
         end
@@ -41,8 +43,8 @@ classdef Vizualizer < handle
                     obj.quadL 0;    % Right dot
                     -obj.quadL 0]'; % Left dot
             % Rotation
-            R = [cos(theta) sin(theta);
-                -sin(theta) cos(theta)];
+            R = [cos(theta) -sin(theta);
+                sin(theta) cos(theta)];
             dots = R*dots;
             % Offset by COM position
             dots = dots + [py;pz];

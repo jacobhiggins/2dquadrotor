@@ -10,4 +10,4 @@ trajHandle = @test;
 sim = Simulation(trajHandle);
 
 %% Execute simulation
-% sim.execute();
+sim.execute();
