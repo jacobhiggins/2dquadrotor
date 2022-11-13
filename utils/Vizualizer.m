@@ -5,17 +5,19 @@ classdef Vizualizer < handle
         
         % ---> Plotting objects
         initPlot = 0;
+        simFig; % Figure for main simulation
         plt_quad_dots; % Plot of quadrotor, dots
         plt_quad_line; % Plot of quadrotor, line
     end
     methods
-        function obj = Vizualizer(x,trajHandle)
+        function obj = Vizualizer(x,traj)
             % Main plot
-            figure(1); hold on;
+            obj.simFig = figure(1); hold on;
             axis equal;
-            [xlims,ylims] = trajHandle(); xlim(xlims); ylim(ylims);
+            xlim(traj.xlims); ylim(traj.ylims);
             
             obj.plotQuadFromState(x);
+            obj.plotRefTraj(traj.pos);
             
             % State components plot
         end
@@ -49,6 +51,10 @@ classdef Vizualizer < handle
             % Offset by COM position
             dots = dots + [py;pz];
             
+        end
+        function plotRefTraj(obj,pos)
+            obj.simFig;
+            plot(pos(1,:),pos(2,:),'r--');
         end
     end
 end

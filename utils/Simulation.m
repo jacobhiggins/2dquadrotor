@@ -7,7 +7,7 @@ classdef Simulation < handle
         dtViz = 0.1; % Vizualization time step
         
         % ---> Objects
-        trajHandle; % Handle for desired trajectory
+        traj; % Desired trajectory
         quad; % Quadrotor object
         ctrl; % Controller object
         viz; % Vizualization object
@@ -17,16 +17,17 @@ classdef Simulation < handle
     end
     methods
         function obj = Simulation(trajHandle)
-            obj.trajHandle = trajHandle;
+            obj.ctrl = Controller();
+            obj.traj = trajHandle(obj.ctrl.dtPosCtrl);
             obj.quad = Quadrotor();
-            obj.viz = Vizualizer(obj.quad.x,trajHandle);
+            obj.viz = Vizualizer(obj.quad.x,obj.traj);
         end
         function execute(obj)
             while obj.t < obj.T
                 obj.t = obj.t + obj.dtSim; % Increment sim time
                 
                 % Get controls u for current time step
-                u = [10.1 5]/2.0;
+                u = [9.8 9.8]/2.0;
                 
                 % Simulate motion
                 obj.quad.motionStep(u,obj.dtSim);
