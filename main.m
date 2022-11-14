@@ -4,7 +4,10 @@ addpath('./utils');
 addpath('./utils/trajectories');
 
 %% Choose trajectory to follow
-trajHandle = @test;
+% trajHandle = @test;
+% trajHandle = @up;
+% trajHandle = @right;
+trajHandle = @upAndRight;
 
 %% Create simulation object
 sim = Simulation(trajHandle);

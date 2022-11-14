@@ -20,7 +20,7 @@ classdef Quadrotor < handle
             % ydot = vy
             % zdot = vz
             % thetadot = thetadot
-            % yddot = (u1 + u2)*sin(theta) / m
+            % yddot = -(u1 + u2)*sin(theta) / m
             % zddot = ( (u1 + u2)*cos(theta) - g ) / m
             % thetaddot = (u1 - u2)*l / I
             xdot = zeros(6,1); % Initialize state time derivative
@@ -31,7 +31,7 @@ classdef Quadrotor < handle
             xdot(2) = x(5);
             xdot(3) = x(6);
             xdot(4) = -(u(1) + u(2))*sin(x(3))/obj.m;
-            xdot(5) = ( (u(1) + u(2))*cos(x(3)) )/obj.m - g;
+            xdot(5) = ( (u(1) + u(2) )*cos(x(3)) )/obj.m - g;
             xdot(6) = (u(1)-u(2))*obj.L/obj.I;
         end
         function motionStep(obj,u,dt)

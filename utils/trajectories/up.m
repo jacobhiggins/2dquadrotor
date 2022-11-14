@@ -1,4 +1,4 @@
-function traj = test(dt)
+function traj = up(dt)
     % Use trajectory object to get trajectory
     T = 3;
     
@@ -19,4 +19,3 @@ function traj = test(dt)
     traj.definePoints(dt);
     
 end
-

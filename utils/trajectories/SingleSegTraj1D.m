@@ -25,6 +25,7 @@ classdef SingleSegTraj1D < handle
             coeffs = A \ boundaryConds; 
         end
         function [pos,vel,acc,ts] = getPoints(obj,dt)
+
             c0 = obj.coeffs(1); c1 = obj.coeffs(2); c2 = obj.coeffs(3);
             c3 = obj.coeffs(4); c4 = obj.coeffs(5); c5 = obj.coeffs(6);
             % Coeff matrix

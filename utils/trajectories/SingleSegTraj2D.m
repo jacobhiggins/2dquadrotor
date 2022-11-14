@@ -16,6 +16,7 @@ classdef SingleSegTraj2D < Trajectory2D
             end
         end
         function definePoints(obj,dt)
+            obj.dt = dt;
             for i = 1:2
                 [posDir,velDir,accDir,ts] = obj.trajDirs{i}.getPoints(dt);
                 pos(i,:) = posDir;

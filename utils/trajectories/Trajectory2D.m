@@ -1,6 +1,7 @@
 classdef Trajectory2D < handle
     properties
         duration;
+        dt;
         ts; % time steps
         pos;
         vel;
